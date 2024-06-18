@@ -1,0 +1,31 @@
+<div
+  class="pt-[88px] tablet:pt-[105px] desktop:pt-[140px] flex flex-col desktop:flex-row gap-10 tablet:gap-16 desktop:justify-between"
+>
+  <main>
+    <h1
+      class="text-mtx font-light text-[2.5rem] tablet:text-[4rem] flex flex-col gap-2"
+    >
+      <span>Welcome to the </span
+      ><span class="font-medium mt">Frontend Quiz!</span>
+    </h1>
+    <h2 class="typo-b-s mt-4 desktop:mt-12 text-stx">
+      Pick a subject to get started.
+    </h2>
+  </main>
+  <nav class="flex flex-col gap-3 tablet:gap-6 flex-1 desktop:max-w-[564px]">
+    @for(quiz of quizzes; track quiz.id) {
+    <a
+      [routerLink]="['skill', quiz.icon]"
+      class="rounded-xl bg-sbg shadow-ninja flex gap-4 tablet:gap-8 p-3 items-center desktop:p-5 w-full"
+    >
+      <img
+        [src]="'images/icon-' + quiz.icon + '.svg'"
+        alt=""
+        class="size-10 p-[6px] tablet:p-2 tablet:size-14 rounded-lg tablet:rounded-xl"
+        [style]="{ backgroundColor: quiz.clr }"
+      />
+      <span class="text-mtx typo-h-s">{{ quiz.title }}</span>
+    </a>
+    }
+  </nav>
+</div>

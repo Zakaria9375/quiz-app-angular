@@ -1,1 +1,67 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* light theme */
+:root:has(#switcher:not(:checked)) {
+	--mbg: 244 246 250;
+	--mtx: 49 62 81;
+	--sbg: 255 255 255;
+	--stx: 98 108 127;
+	--shade: 143 160 193;
+}
+
+/* dark theme */
+:root:has(#switcher:checked) {
+	--mbg: 49 62 81;
+	--mtx: 255 255 255;
+	--sbg: 59 77 102;
+	--stx: 171 193 255;
+	--shade: 49 62 81;
+}
+
+@layer base {
+
+	body {
+		@apply leading-none font-normal bg-mbg relative min-h-dvh;
+	}
+}
+
+@layer components {
+	.typo-display {
+		@apply font-medium text-[5.5rem] tablet:text-[9rem];
+	}
+
+	.typo-h-l {
+		@apply text-[2.5rem] tablet:text-[4rem];
+	}
+
+	.typo-h-m {
+		@apply text-[1.25rem] font-medium tablet:text-[2.25rem] leading-[1.2];
+	}
+
+	.typo-h-s {
+		@apply text-[1.125rem] tablet:text-[1.75rem] font-medium;
+	}
+
+	.typo-b-m {
+		@apply text-[1.125rem] leading-none tablet:text-[1.5rem] tablet:leading-[1.5];
+	}
+
+	.typo-b-s {
+		@apply text-[0.875rem] tablet:text-[1.25rem] leading-[1.875rem] italic;
+	}
+
+	.g-btn {
+		@apply rounded-xl tablet:rounded-3xl shadow-ninja w-full typo-h-s p-3;
+	}
+
+	.submit-btn {
+		@apply mt-3 tablet:mt-8 p-5 tablet:p-8 bg-my-purple hover-effect text-white text-center
+	}
+}
+
+.hover-effect:hover {
+	background: linear-gradient(0deg, rgba(255, 255, 255, 0.50) 0%, rgba(255, 255, 255, 0.50) 100%), #A729F5;
+}

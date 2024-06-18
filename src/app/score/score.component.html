@@ -1,0 +1,12 @@
+<article class="desktop:flex justify-between" aria-live="polite" [@slide-in-out]>
+  <div class="w-full desktop:max-w-[465px]">
+    <h1 class="typo-h-l mb-2 font-light text-mtx">Quiz completed</h1>
+    <h2 class="typo-h-l font-bold text-mtx">You scored...</h2>
+  </div>
+  <div class="mt-10 tablet:mt-16 w-full desktop:max-w-[564px]">
+    <div class="rounded-xl tablet:rounded-3xl bg-sbg w-full p-8 tablet:p-12">
+      <ng-content select=".score"></ng-content>
+    </div>
+    <a routerLink="/" class="g-btn submit-btn block" aria-label="Take another quiz">Play Again</a>
+  </div>
+</article>

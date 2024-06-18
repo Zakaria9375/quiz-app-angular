@@ -1,0 +1,15 @@
+@tailwind components;
+
+@layer components {
+  .switch-btn {
+    @apply block w-8 tablet:w-12 h-5 tablet:h-[28px] rounded-full bg-my-purple cursor-pointer relative z-10 duration-200;
+  }
+  .switch-btn:after {
+    @apply absolute content-[''] bg-white size-3 tablet:size-5 rounded-full m-1 left-0 z-20 duration-200;
+  }
+  #switcher:checked + .switch-btn::after {
+    @apply translate-x-3 tablet:translate-x-5 ;
+  }
+	
+}
+

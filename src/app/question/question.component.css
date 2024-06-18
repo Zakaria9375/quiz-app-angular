@@ -1,0 +1,34 @@
+@tailwind components;
+
+@layer components {
+	.selected {
+		@apply border border-my-purple;
+	}
+
+	.selected-true {
+		@apply border border-my-green;
+	}
+
+	.selected-false {
+		@apply border border-my-red;
+	}
+
+	.custom-img {
+		@apply absolute size-10 right-3 desktop:right-5 bottom-1/2 translate-y-1/2;
+	}
+
+	.nr-hover {
+		@apply bg-my-purple group-hover:bg-my-purple text-white group-hover:text-white;
+	}
+
+	.nr-selected-true {
+		@apply bg-my-green group-hover:bg-my-green text-white group-hover:text-white
+	}
+
+	.nr-selected-false {
+		@apply bg-my-red group-hover:bg-my-red text-white group-hover:text-white;
+	}
+  .loader {
+    @apply  size-12 tablet:size-16 border-[5px] border-my-purple rounded-full border-b-transparent inline-block animate-spin
+  }
+}

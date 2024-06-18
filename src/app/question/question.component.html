@@ -1,0 +1,92 @@
+@if (doc()?.question) {
+  <article aria-live="polite" aria-labelledby="question-nr"
+           class="desktop:flex justify-between desktop:gap-8"
+           [attr.aria-describedby]="err? 'error' : ''">
+    <div class="w-full desktop:max-w-[465px] flex flex-col desktop:max-h-[452px]">
+      <ng-content select=".quiz-heading"></ng-content>
+      <h1 class="typo-h-m text-mtx">{{ doc()?.question }}</h1>
+      <div
+        class="mt-6 mb-10 tablet:mt-10 tablet:mb-16 desktop:mt-auto desktop:mb-0"
+      >
+        <ng-content select=".quiz-progress"></ng-content>
+      </div>
+    </div>
+    <div class="w-full desktop:max-w-[564px]">
+      <ul class="space-y-3 tablet:space-y-6">
+        @for (choice of doc()?.choices; track $index) {
+          <li class="relative">
+            <button
+              (click)="selectChoice(choice)"
+              class="g-btn bg-sbg desktop:px-5 text-mtx desktop:py-[18px] flex gap-4 tablet:gap-8 items-center group transition-all duration-200"
+              [ngClass]="{
+              selected: getSelectedClass(choice),
+              'selected-false': getSelectedInCorrectly(choice),
+              'selected-true': getCorrectAnswer(choice)
+            }"
+              [disabled]="isSubmitted"
+              [attr.aria-pressed]="getSelectedClass(choice)"
+            >
+            <span
+              class="px-[14px] py-[11px] tablet:py-[14px] tablet:px-[18px] rounded-lg tablet:rounded-xl bg-light-grey text-grey-navy uppercase group-hover:text-my-purple group-hover:bg-[#F6E7FF] transition-all duration-200"
+              [ngClass]="{
+                'nr-hover': getSelectedClass(choice),
+                'nr-selected-true': getCorrectAnswer(choice),
+                'nr-selected-false': getSelectedInCorrectly(choice)
+              }"
+            >{{ choiceNr($index) }}</span
+            >{{ choice }}
+            </button>
+            @if (getCorrectAnswer(choice)) {
+              <img
+                src="images/icon-correct.svg"
+                alt="This is a Correct answer"
+                class="custom-img"
+                aria-live="polite"
+                [@fade]
+              />
+            }
+            @if (getSelectedInCorrectly(choice)) {
+              <img
+                src="images/icon-incorrect.svg"
+                alt="This is a Wrong answer"
+                class="custom-img"
+                aria-live="polite"
+                [@fade]
+              />
+            }
+          </li>
+        }
+      </ul>
+      @if (!isSubmitted) {
+        <button class="g-btn submit-btn" (click)="onSubmit()">
+          Submit Answer
+        </button>
+      } @else {
+        <button class="g-btn submit-btn" aria-live="polite" (click)="onNext()">
+          Next Question
+        </button>
+      }
+      @if (err) {
+        <p
+          aria-live="polite"
+          class="flex items-center justify-center gap-2 mt-3 tablet:mt-8"
+          id="error"
+          [@slide-in-out]
+        >
+          <img
+            src="images/icon-error.svg"
+            alt="Error icon"
+            class="size-8 tablet:size-10"
+          />
+          <span class="text-my-red typo-b-m">Please select an answer</span>
+        </p>
+      }
+    </div>
+  </article>
+} @else {
+  <div class="flex items-center justify-center min-h-[500px] w-full">
+    <span class="loader"></span>
+  </div>
+
+}
+

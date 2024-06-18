@@ -1,0 +1,52 @@
+<header class="flex items-center gap-4 tablet:gap-6 mb-12 desktop:mb-[85px]">
+  <img
+    [src]="'images/icon-' + quiz.icon + '.svg'"
+    alt=""
+    class="size-10 p-[6px] tablet:p-2 tablet:size-14 rounded-lg tablet:rounded-xl"
+    [style]="{ backgroundColor: quiz.clr }"
+  />
+  <span class="text-mtx typo-h-s">{{ quiz.title }}</span>
+</header>
+<main>
+  @if (!completed) {
+    <app-question (next)="OnNext($event)" [doc]="currentQuestion">
+      <h2 class="quiz-heading mb-3 tablet:mb-7 text-stx typo-b-s" id="question-nr">
+        Question {{ currentIdx() + 1 }} of {{ total() }}
+      </h2>
+      <div
+        class="quiz-progress rounded-full bg-sbg w-full h-4 p-2 flex items-center"
+
+      >
+        <div
+          class="h-2 bg-my-purple rounded-full duration-1000 transition-all"
+          role="progressbar"
+          aria-label="Quiz progress"
+          [attr.aria-valuenow]="progress()"
+          [attr.aria-valuemin]="0"
+          [attr.aria-valuemax]="100"
+          [style.width.%]="progress()"
+        ></div>
+      </div>
+    </app-question>
+  } @else {
+    <app-score>
+      <div class="score">
+        <h3 class="flex items-center justify-center gap-4 tablet:gap-6">
+          <img
+            [src]="'images/icon-' + quiz.icon + '.svg'"
+            alt=""
+            class="size-10 p-[6px] tablet:p-2 tablet:size-14 rounded-lg tablet:rounded-xl"
+            [style]="{ backgroundColor: quiz.clr }"
+          />
+          <span class="text-mtx typo-h-s">{{ quiz.title }}</span>
+        </h3>
+        <h4 class="typo-display my-4 tablet:mt-10 text-mtx text-center"
+            aria-description="your score">
+          {{ score() }}
+        </h4>
+        <h5 class="text-stx typo-b-m text-center">out of {{ total() }}</h5>
+      </div>
+    </app-score>
+  }
+</main>
+
