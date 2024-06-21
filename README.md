@@ -2,6 +2,24 @@
 
 This is a solution to the [Frontend quiz app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/frontend-quiz-app-BE7xkzXQnU). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
+## Table of Contents
+
+- [Overview](#overview)
+  - [Figma Design](#figma-design)
+  - [Outcome](#outcome)
+- [Technologies](#technologies)
+- [Features](#features)
+- [Setup](#setup)
+- [Links](#links)
+- [Testing](#testing)
+  - [Accessibility](#accessibility) 
+  -  [Unit Testing](#unit-testing)
+- [Screenshots](#screenshots)
+- [Retrospectives](#retrospectives)
+- [About The Author](#about-the-author)
+- [Contributing](#contributing)
+- [License](#license)
+
 ## Overview
 
 ### Figma Design
@@ -31,7 +49,7 @@ The technologies used in this project are:
 * **Accessibility**: Built with accessibility in mind.
 * **Animations**: Smooth animations for all app interactions.
 * **Unit testing**: Comprehensive unit tests to ensure code reliability.
-* **Identical Design**: Almost identical to figma design.
+* **Pixel Perfect**: Almost identical to figma design.
 * **Innovative Solution**: Created innovative solution to complex challenge, demonstrating creativity and problem-solving skills.
 
 ## Setup
@@ -59,7 +77,7 @@ ng serve
 ### Accessibility
 
 This app has been crafted with a focus on accessibility, utilizing the Accessibility Linter, IBM Equal Access Accessibility Checker extension, and WCAG extension to adhere to accessibility best practices. Key features include: Zooming,
-Keyboard-only navigation, Static code analysis, Aria rules compliance, and semantic HTML.
+Keyboard-only navigation, Static code analysis, Aria rules compliance, and Semantic HTML.
 
 ### Unit Testing
 
@@ -86,7 +104,7 @@ ng test
 <details>
   <summary><b>Lighthouse Report</b></summary>
 <p align="center">
-<img src="./public/light-house.PNG" alt="Lighthouse tests" width="450">
+<img src="./public/lighthouse.PNG" alt="Lighthouse tests" width="450">
 </p>
 </details>
 
@@ -109,6 +127,10 @@ ng test
 > What went well ?
 
 I am proud of accessibility, styling, clean markup, innovative problem-solving, great ux, animation and attention to every detail.
+
+> What has been failed ?
+
+Firebase Unit testing
 
 > What could be improved ?
 

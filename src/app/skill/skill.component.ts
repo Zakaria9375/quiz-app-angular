@@ -2,7 +2,6 @@ import {Component, computed, effect, signal} from '@angular/core';
 import { Quiz } from '../model/quiz.interface';
 import { Firestore, collection, collectionData } from '@angular/fire/firestore';
 import { quizzes } from '../model/quizzes';
-import { AsyncPipe, JsonPipe } from '@angular/common';
 import {ActivatedRoute, RouterOutlet} from '@angular/router';
 import { QuestionComponent } from '../question/question.component';
 import { ScoreComponent } from '../score/score.component';
@@ -12,9 +11,7 @@ import {QuizDoc} from "../model/quizDoc.interface";
   selector: 'app-skill',
   standalone: true,
   imports: [
-    AsyncPipe,
     QuestionComponent,
-    JsonPipe,
     ScoreComponent,
     RouterOutlet,
   ],

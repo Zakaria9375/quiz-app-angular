@@ -1,7 +1,7 @@
 import { Routes} from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import {skillMatcher} from "../skillMatcher";
-import {skillTitleStrategy} from "../titleStrategy";
+import {skillMatcher} from "./common/skillMatcher";
+import {skillTitleStrategy} from "./common/titleStrategy";
 
 export const routes: Routes = [
 

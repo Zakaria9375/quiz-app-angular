@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import {slidInOut} from "../../animations";
+import {slidInOut} from "../common/animations";
 
 @Component({
   selector: 'app-score',

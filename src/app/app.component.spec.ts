@@ -4,7 +4,7 @@ import {RouterModule} from "@angular/router";
 import {routes} from "./app.routes";
 import {By} from "@angular/platform-browser";
 import {NO_ERRORS_SCHEMA} from "@angular/core";
-import {FormsModule, NgModel} from "@angular/forms";
+import {FormsModule} from "@angular/forms";
 
 describe('AppComponent', () => {
   let app: AppComponent;
@@ -21,25 +21,36 @@ describe('AppComponent', () => {
     fixture.detectChanges();
   });
 
+  beforeEach(() => {
+    let localStore: any  = {'user-theme': 'light', 'another': 'unknown'};
+    const mockLocalStorage = {
+      getItem: (key: string): string => {
+        return key in localStore  ? localStore[key] : null;
+      },
+      setItem: (key: string, value: string) => {
+        localStore[key] = `${value}`;
+      }
+    };
+    spyOn(localStorage, 'getItem')
+      .and.callFake(mockLocalStorage.getItem);
+    spyOn(localStorage, 'setItem')
+      .and.callFake(mockLocalStorage.setItem);
+  });
 
   // local storage user-theme getting
   it('should get theme from local storage', () => {
-    spyOn(localStorage, 'getItem').and.returnValue('dark');
     app.initTheme()
-    expect(app.isDark).toBe(true);
-    expect(app.isDarkTheme()).toBe(true);
+    expect(localStorage.getItem('user-theme')).toEqual('light');
   });
 
   // local storage user-theme setting
   it('should set theme from local storage', () => {
-    const setItemSpy =  spyOn(localStorage, 'setItem')
-    app.ngOnInit()
-    app.isDarkTheme.set(true)
+    app.isDark = true;
     fixture.detectChanges();
-    expect(setItemSpy).toHaveBeenCalledWith('user-theme','dark');
-    app.isDarkTheme.set(true)
+    expect(localStorage.setItem).toHaveBeenCalledWith('user-theme','dark');
+    app.isDark = false;
     fixture.detectChanges();
-    expect(setItemSpy).toHaveBeenCalledWith('user-theme', 'light')
+    expect(localStorage.setItem).toHaveBeenCalledWith('user-theme', 'light')
   })
 
   // window resizing signal

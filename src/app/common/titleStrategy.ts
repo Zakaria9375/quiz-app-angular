@@ -1,5 +1,5 @@
 import {ActivatedRouteSnapshot, ResolveFn, RouterStateSnapshot} from "@angular/router";
-import {quizzes} from "./app/model/quizzes";
+import {quizzes} from "../model/quizzes";
 
 
 export const skillTitleStrategy: ResolveFn<string> = (route: ActivatedRouteSnapshot,   state: RouterStateSnapshot,)=> {

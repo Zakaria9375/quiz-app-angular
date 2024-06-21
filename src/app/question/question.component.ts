@@ -1,7 +1,7 @@
 import { NgClass } from '@angular/common';
 import {Component, input, OnChanges, output, SimpleChanges} from '@angular/core';
 import {QuizDoc} from "../model/quizDoc.interface";
-import {fading, slidInOut} from "../../animations";
+import {fading, slidInOut} from "../common/animations";
 
 @Component({
   selector: 'app-question',
