@@ -71,6 +71,7 @@ ng serve
 
 * [Challenge Page](https://www.frontendmentor.io/challenges/frontend-quiz-app-BE7xkzXQnU)
 * [Live Demo](https://za-quiz.netlify.app/)
+* [React Solution for this challenge](https://github.com/Zakaria9375/quiz-app-react)
 
 ## Testing
 
